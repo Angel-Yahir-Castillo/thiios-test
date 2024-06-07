@@ -29,11 +29,20 @@ class AuthController extends Controller
     }
 
     public function register(CreateUserRequest $request){
+        //create a user with the validated data
         $user = User::create($request->validated());
 
+        //return the user data
         return jsonResponse(data: ['user' => $user]);
     }
 
+    public function logout()
+    {
+        //logout the user
+        auth()->logout();
+
+        return jsonResponse(message: 'Successfully logged out');
+    }
 
     protected function respondWithToken($token)
     {
