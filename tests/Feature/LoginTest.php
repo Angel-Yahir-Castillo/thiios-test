@@ -15,7 +15,6 @@ class LoginTest extends TestCase
     #[Test]
     public function an_existing_user_can_login(): void
     {
-        Artisan::call('db:seed');
         //create the credentials with an existing user
         $credentials = ['email' => 'test@example.com', 'password' => 'password'];
 
@@ -30,7 +29,6 @@ class LoginTest extends TestCase
     #[Test]
     public function a_non_existing_user_cannot_login(): void
     {
-        Artisan::call('db:seed');
         //create the credentials with a non existing user
         $credentials = ['email' => 'test@nonexisting.com', 'password' => 'password'];
 
@@ -45,7 +43,6 @@ class LoginTest extends TestCase
     #[Test]
     public function an_existing_user_cannot_login_with_incorrect_password(): void
     {
-        Artisan::call('db:seed');
         //create the credentials with a wrong password
         $credentials = ['email' => 'test@example.com', 'password' => 'incorrect'];
 
@@ -60,7 +57,6 @@ class LoginTest extends TestCase
     #[Test]
     public function email_must_be_required(): void
     {
-        Artisan::call('db:seed');
         //create the credentials without email
         $credentials = ['password' => 'password'];
 
@@ -75,7 +71,6 @@ class LoginTest extends TestCase
     #[Test]
     public function email_must_be_valid_email(): void
     {
-        Artisan::call('db:seed');
         //create the credentials with a non valid email
         $credentials = ['email' => 'email', 'password' => 'password'];
 
@@ -90,7 +85,6 @@ class LoginTest extends TestCase
     #[Test]
     public function password_must_be_required(): void
     {
-        Artisan::call('db:seed');
         //create the credentials without password
         $credentials = ['email' => 'test@example.com',];
 
@@ -100,6 +94,12 @@ class LoginTest extends TestCase
         //validate the response
         $response->assertStatus(422);
         $response->assertJsonStructure(['message', 'data', 'status', 'errors' => ['password']]);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed();
     }
 
 }
