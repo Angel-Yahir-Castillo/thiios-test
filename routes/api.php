@@ -14,5 +14,6 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'users', 'middleware' => 'auth:api'], function () {
     Route::get('/', [UserController::class, 'index']);
+    Route::delete('/{id}', [UserController::class, 'destroy']);
 });
 
