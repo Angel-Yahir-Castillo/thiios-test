@@ -1,11 +1,10 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Mockery\Generator\StringManipulation\Pass\Pass;
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
@@ -185,5 +184,4 @@ class UserRegisterTest extends TestCase
         $response->assertStatus(422);
         $response->assertJsonStructure(['message', 'data', 'status', 'errors' => ['name']]);
     }
-
 }
