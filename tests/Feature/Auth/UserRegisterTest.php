@@ -23,8 +23,8 @@ class UserRegisterTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //reguster user request
-        $response = $this->postJson('api/register', $data);
+        //register user request
+        $response = $this->postJson('api/auth/register', $data);
 
         //validate the response
         $response->assertStatus(200);
@@ -44,8 +44,8 @@ class UserRegisterTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //login request
-        $response = $this->postJson("api/register", $data);
+        //register user request
+        $response = $this->postJson("api/auth/register", $data);
 
         //validate the response
         $response->assertStatus(422);
@@ -63,8 +63,8 @@ class UserRegisterTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //login request
-        $response = $this->postJson("api/register", $data);
+        //register user request
+        $response = $this->postJson("api/auth/register", $data);
 
         //validate the response
         $response->assertStatus(422);
@@ -85,8 +85,8 @@ class UserRegisterTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //login request
-        $response = $this->postJson("api/register", $data);
+        //register user request
+        $response = $this->postJson("api/auth/register", $data);
 
         //validate the response
         $response->assertStatus(422);
@@ -103,8 +103,8 @@ class UserRegisterTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //login request
-        $response = $this->postJson("api/register", $data);
+        //register user request
+        $response = $this->postJson("api/auth/register", $data);
 
         //validate the response
         $response->assertStatus(422);
@@ -122,8 +122,8 @@ class UserRegisterTest extends TestCase
             'password_confirmation' => 'pass',
         ];
 
-        //login request
-        $response = $this->postJson("api/register", $data);
+        //register user request
+        $response = $this->postJson("api/auth/register", $data);
 
         //validate the response
         $response->assertStatus(422);
@@ -140,8 +140,8 @@ class UserRegisterTest extends TestCase
             'password' => 'password',
         ];
 
-        //login request
-        $response = $this->postJson("api/register", $data);
+        //register user request
+        $response = $this->postJson("api/auth/register", $data);
 
         //validate the response
         $response->assertStatus(422);
@@ -158,8 +158,8 @@ class UserRegisterTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //login request
-        $response = $this->postJson("api/register", $data);
+        //register user request
+        $response = $this->postJson("api/auth/register", $data);
 
         //validate the response
         $response->assertStatus(422);
@@ -177,8 +177,8 @@ class UserRegisterTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //login request
-        $response = $this->postJson("api/register", $data);
+        //register user request
+        $response = $this->postJson("api/auth/register", $data);
 
         //validate the response
         $response->assertStatus(422);

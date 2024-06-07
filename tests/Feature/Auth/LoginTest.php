@@ -18,7 +18,7 @@ class LoginTest extends TestCase
         $credentials = ['email' => 'test@example.com', 'password' => 'password'];
 
         //login request
-        $response = $this->postJson("api/login", $credentials);
+        $response = $this->postJson("api/auth/login", $credentials);
 
         //validate the response
         $response->assertStatus(200);
@@ -32,7 +32,7 @@ class LoginTest extends TestCase
         $credentials = ['email' => 'test@nonexisting.com', 'password' => 'password'];
 
         //login request
-        $response = $this->postJson("api/login", $credentials);
+        $response = $this->postJson("api/auth/login", $credentials);
 
         //validate the response
         $response->assertStatus(401);
@@ -46,7 +46,7 @@ class LoginTest extends TestCase
         $credentials = ['email' => 'test@example.com', 'password' => 'incorrect'];
 
         //login request
-        $response = $this->postJson("api/login", $credentials);
+        $response = $this->postJson("api/auth/login", $credentials);
 
         //validate the response
         $response->assertStatus(401);
@@ -60,7 +60,7 @@ class LoginTest extends TestCase
         $credentials = ['password' => 'password'];
 
         //login request
-        $response = $this->postJson("api/login", $credentials);
+        $response = $this->postJson("api/auth/login", $credentials);
 
         //validate the response
         $response->assertStatus(422);
@@ -74,7 +74,7 @@ class LoginTest extends TestCase
         $credentials = ['email' => 'email', 'password' => 'password'];
 
         //login request
-        $response = $this->postJson("api/login", $credentials);
+        $response = $this->postJson("api/auth/login", $credentials);
 
         //validate the response
         $response->assertStatus(422);
@@ -88,7 +88,7 @@ class LoginTest extends TestCase
         $credentials = ['email' => 'test@example.com',];
 
         //login request
-        $response = $this->postJson("api/login", $credentials);
+        $response = $this->postJson("api/auth/login", $credentials);
 
         //validate the response
         $response->assertStatus(422);
