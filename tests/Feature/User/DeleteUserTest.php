@@ -30,7 +30,7 @@ class DeleteUserTest extends TestCase
     #[Test]
     public function a_non_logged_in_user_cannot_delete_a_user(): void
     {
-        //user list request without a logged in user
+        //delete user request without a logged in user
         $response = $this->deleteJson('api/users/2');
 
         //validate the response
