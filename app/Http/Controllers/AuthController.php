@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class AuthController extends Controller
         $user = User::create($request->validated());
 
         //return the user data
-        return jsonResponse(data: ['user' => $user]);
+        return jsonResponse(data: ['user' => UserResource::make($user)]);
     }
 
     public function logout()
