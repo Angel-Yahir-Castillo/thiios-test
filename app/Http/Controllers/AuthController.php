@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -26,7 +28,11 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
+    public function register(CreateUserRequest $request){
+        $user = User::create($request->validated());
 
+        return jsonResponse(data: ['user' => $user]);
+    }
 
 
     protected function respondWithToken($token)
