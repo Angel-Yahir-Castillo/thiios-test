@@ -37,6 +37,11 @@ class AuthController extends Controller
         return jsonResponse(data: ['user' => UserResource::make($user)]);
     }
 
+    public function me()
+    {
+        return jsonResponse(data: ['user' => UserResource::make(auth()->user())]);
+    }
+
     public function logout()
     {
         //logout the user
