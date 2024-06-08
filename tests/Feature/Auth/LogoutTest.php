@@ -13,9 +13,9 @@ class LogoutTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function a_logged_in_user_can_logout(): void
+    public function an_authenticatedcated_user_can_logout(): void
     {
-        //logout request with an logged in user
+        //logout request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/auth/logout');
 
         //validate the response
@@ -25,9 +25,9 @@ class LogoutTest extends TestCase
     }
 
     #[Test]
-    public function a_non_logged_in_user_cannot_logout(): void
+    public function an_unauthenticated_user_cannot_logout(): void
     {
-        //logout request without a logged in user
+        //logout request with an unauthenticated useruser
         $response = $this->postJson('api/auth/logout');
 
         //validate the response

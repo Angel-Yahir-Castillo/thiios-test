@@ -13,7 +13,7 @@ class CreateUserTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function a_logged_in_user_can_register_a_new_user() :void
+    public function an_authenticated_user_can_register_a_new_user() :void
     {
         //create correct data for a new user
         $data = [
@@ -23,7 +23,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response
@@ -35,7 +35,7 @@ class CreateUserTest extends TestCase
     }
 
     #[Test]
-    public function a_non_logged_in_user_cannot_register_a_new_user(): void
+    public function an_unauthenticated_user_cannot_register_a_new_user(): void
     {
         //create correct data for a new user
         $data = [
@@ -45,7 +45,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //register a new user request without a logged in user
+        //register a new user request with an unauthenticated user
         $response = $this->postJson('api/users/', $data);
 
         //validate the response
@@ -66,7 +66,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response
@@ -85,7 +85,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response
@@ -104,7 +104,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response
@@ -122,7 +122,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response
@@ -141,7 +141,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'pass',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response
@@ -159,7 +159,7 @@ class CreateUserTest extends TestCase
             'password' => 'password',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response
@@ -177,7 +177,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response
@@ -196,7 +196,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        //register a new user request with an logged in user
+        //register a new user request with an authenticated user
         $response = $this->apiAs(User::find(1),'post','api/users/', $data);
 
         //validate the response

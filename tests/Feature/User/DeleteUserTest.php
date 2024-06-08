@@ -13,9 +13,9 @@ class DeleteUserTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function a_logged_in_user_can_delete_an_existing_user(): void
+    public function an_authenticated_user_can_delete_an_existing_user(): void
     {
-        //delete user request with an logged in user
+        //delete user request with an authenticated user
         $response = $this->apiAs(User::find(1),'delete','api/users/2');
 
         //validate the response
@@ -28,9 +28,9 @@ class DeleteUserTest extends TestCase
     }
 
     #[Test]
-    public function a_non_logged_in_user_cannot_delete_a_user(): void
+    public function an_unauthenticated_user_cannot_delete_a_user(): void
     {
-        //delete user request without a logged in user
+        //delete user request with an unauthenticated user
         $response = $this->deleteJson('api/users/2');
 
         //validate the response
@@ -39,12 +39,12 @@ class DeleteUserTest extends TestCase
     }
 
     #[Test]
-    public function a_logged_in_user_cannot_delete_a_non_existing_user(): void
+    public function an_authenticated_user_cannot_delete_a_non_existing_user(): void
     {
         //check that the user does not exist
         $this->assertDatabaseMissing('users', ['id' => 3]);
 
-        //delete user request with an logged in user
+        //delete user request with an authenticated user
         $response = $this->apiAs(User::find(1),'delete','api/users/3');
 
         //validate the response

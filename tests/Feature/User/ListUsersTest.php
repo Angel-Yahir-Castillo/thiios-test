@@ -13,9 +13,9 @@ class ListUsersTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function a_logged_in_user_can_get_all_users(): void
+    public function an_authenticated_user_can_get_all_users(): void
     {
-        //user list request with an logged in user
+        //user list request with an authenticated user
         $response = $this->apiAs(User::find(1),'get','api/users/');
 
         //validate the response
@@ -25,9 +25,9 @@ class ListUsersTest extends TestCase
     }
 
     #[Test]
-    public function a_non_logged_in_user_cannot_get_the_users_list(): void
+    public function an_unauthenticated_user_cannot_get_the_users_list(): void
     {
-        //user list request without a logged in user
+        //user list request with an unauthenticated user
         $response = $this->getJson('api/users/');
 
         //validate the response
