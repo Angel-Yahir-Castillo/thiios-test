@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -25,6 +26,22 @@ class UserController extends Controller
         return jsonResponse(data: ['user' => UserResource::make($user)]);
     }
 
+    public function update(UpdateUserRequest $request, $id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return jsonResponse(message: 'User not found', status: 404);
+        }
+
+        $user->update($request->validated());
+
+        return jsonResponse(
+            data: ['user' => UserResource::make($user->fresh())],
+            message: 'User updated successfully'
+        );
+
+    }
     public function destroy($id)
     {
         //find the user with the id passed
