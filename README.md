@@ -36,18 +36,35 @@ composer install
 
 5. Rename the file ".env.example" to ".env", located in the root directory of the project
 
-6. Run the Development Servers. Open two terminal: 
+6. For run the Development Servers, you must open two terminal: 
 
-In the first, run: ```  php artisan serve ``` 
+In the first, run: ```  php artisan serve ```  <br>
 In the second, run: ```  npm run dev ``` 
 
 ### Database Configuration
 
-[Add instructions here for setting up and configuring the database. Include steps for any necessary migrations or seeding of initial data.]
+The application uses a sqlite database, so you only need to run the migrations and the seeder to have the test user:
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+<b>Note: </b> If a warning message appears, just click enter
 
 ### Running Tests
 
-[Provide instructions here for running tests on the project. If you're using a specific testing framework, mention it here.]
+Must run the next command to generate a jwt secret key for your app
+
+```
+php artisan jwt:secret
+```
+
+After you have configured everything above, to run the tests you only need to run the following command, the tests should not cause any errors:
+
+```
+php artisan test
+```
 
 ## Application Architecture
 
