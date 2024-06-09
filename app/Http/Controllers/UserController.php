@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::paginate();
+        $users = User::where('id', '!=', auth()->user()->id)->paginate();
         return jsonResponse(data: new UserCollection($users));
     }
 
