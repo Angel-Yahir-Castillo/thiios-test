@@ -120,6 +120,17 @@
         }
     );
 
+    axios.interceptors.response.use(
+        response => response,
+        async error => {
+            if (error.response && error.response.status === 401) {
+                localStorage.removeItem('access_token');
+                localStorage.setItem('session-info', 'Session expired');
+                Vue.$router.push('/login');
+            }
+        }
+    );
+
     export default {
         components: {
             SnackbarMessage
