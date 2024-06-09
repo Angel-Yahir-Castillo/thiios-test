@@ -48,7 +48,10 @@ php artisan migrate
 php artisan db:seed
 ```
 
-<b>Note: </b> If a warning message appears, just click enter
+<b>Note: </b> If a warning message appears, just click enter.
+The credentials for the user are: 
+- Email: test@example.com
+- Password: password
 
 ### Running Tests
 
