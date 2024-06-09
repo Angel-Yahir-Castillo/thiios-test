@@ -8,6 +8,8 @@ Our project is a [brief description of the project, e.g., web application, API s
 
 ### Environment Setup
 
+<b>Note: </b>you must have php in version 8.2 or higher, and node js in version 18.13 or higher.
+
 1. Clone the repository:
 
 ```
@@ -16,7 +18,28 @@ git clone https://github.com/Angel-Yahir-Castillo/thiios-test.git
 
 2. Navigate to the project directory:
 
-``` cd thiios-test ```
+``` 
+cd thiios-test 
+```
+
+3. Open a terminal and run npm install to install all node dependencies for the project:
+
+```
+npm install
+```
+
+4. Run composer install to install the dependencies of the laravel project:
+
+``` 
+composer install
+```
+
+5. Rename the file ".env.example" to ".env", located in the root directory of the project
+
+6. Run the Development Servers. Open two terminal: 
+
+In the first, run: ```  php artisan serve ``` 
+In the second, run: ```  npm run dev ``` 
 
 ### Database Configuration
 
