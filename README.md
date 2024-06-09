@@ -10,12 +10,13 @@ Our project is a [brief description of the project, e.g., web application, API s
 
 1. Clone the repository:
 
+```
 git clone https://github.com/Angel-Yahir-Castillo/thiios-test.git
+```
 
 2. Navigate to the project directory:
 
-cd thiios-test
-
+``` cd thiios-test ```
 
 ### Database Configuration
 
