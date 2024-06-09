@@ -68,20 +68,20 @@ php artisan test
 
 ## Application Architecture
 
-Our application follows a [describe architecture pattern, e.g., MVC, microservices, etc.]. It consists of the following key components:
+This application follows a monolithic architecture pattern. It consists of the following key components:
 
-- **Frontend:** [Describe the frontend technologies used, such as React, Vue.js, etc.]
-- **Backend:** [Describe the backend technologies used, such as Node.js, Django, etc.]
-- **Database:** [Mention the database technology used, e.g., MySQL, PostgreSQL, MongoDB, etc.]
-- **APIs:** [Explain any APIs used in the application, including third-party APIs or custom-built ones.]
+- **Frontend:** The frontend is built using Vue.js with Vite and Vuetify.
+- **Backend:** The backend is built with Laravel 11, providing APIs for frontend interaction.
+- **Database:** SQLite is utilized, which comes pre-configured with Laravel by default.
+- **APIs:** Laravel provides RESTful APIs for frontend-backend communication, secured with JWT authentication.
 
 ## Key Decisions
 
-During development, we made several key decisions to ensure the project's success:
+During development, I made several key decisions to ensure the project's success:
 
-- **Technology Stack:** We chose [mention technologies used, e.g., React.js for the frontend, Node.js for the backend] due to their scalability, performance, and community support.
-- **Database Choice:** After evaluating different options, we decided to use [mention database technology] because of its [mention advantages, e.g., scalability, flexibility].
-- **Authentication Mechanism:** We implemented [mention authentication mechanism, e.g., JWT-based authentication] for securing user authentication and authorization.
+- **Technology Stack:** Vue.js was chosen for the frontend and Laravel for the backend due to their robustness, scalability, and extensive community support.
+- **Database Choice:** SQLite was chosen as the database technology for its ease of use and seamless integration with Laravel.
+- **Authentication Mechanism:** JWT-based authentication was implemented to secure user authentication and authorization, ensuring data integrity and user privacy.
 
 ## Test-Driven Development (TDD)
 
