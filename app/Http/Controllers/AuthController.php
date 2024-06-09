@@ -42,6 +42,11 @@ class AuthController extends Controller
         return jsonResponse(data: ['user' => UserResource::make(auth()->user())]);
     }
 
+    public function refresh()
+    {
+        return $this->respondWithToken(auth()->refresh());
+    }
+
     public function logout()
     {
         //logout the user
