@@ -1,7 +1,11 @@
 <template>
-    <div>
-        <h1>Hello world !!!</h1>
-    </div>
-    <v-btn color="primary">Button</v-btn>
-
+    <v-app>
+        <router-view></router-view>
+    </v-app>
 </template>
+
+<script>
+    export default {
+        name: 'App',
+    };
+</script>
