@@ -24,7 +24,7 @@
                     <template v-slot:item.actions="{ item }">
                         <v-tooltip text="Tooltip">
                             <template v-slot:activator="{ props }">
-                                <v-icon small @click="editUser(item)" v-bind="props" style="color: blue;">mdi-pencil</v-icon>
+                                <v-icon small @click="openUpdateDialog(item)" v-bind="props" style="color: blue;">mdi-pencil</v-icon>
                             </template>
                             <span>Edit</span>
                         </v-tooltip>
@@ -73,6 +73,26 @@
             </v-card>
         </v-dialog>
 
+        <v-dialog v-model="updateDialog" max-width="400">
+            <v-card>
+                <v-card-title>Update a User</v-card-title>
+                <v-card-text>
+                    <v-form ref="updateForm">
+                        <input type="hidden" v-model="idValue">
+                        <v-text-field
+                            label="Name" variant="outlined"
+                            v-model="userName" required :rules="nameRules"
+                            :error-messages="nameErrors">
+                        </v-text-field>
+                    </v-form>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn color="primary" @click="updateUser">Update</v-btn>
+                    <v-btn @click="closeUpdateDialog">Cancel</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
         <SnackbarMessage
             v-if="showSnackbar"
             :message="snackbarMessage"
@@ -116,10 +136,13 @@
                     { title: 'Actions', key: 'actions', sortable: false },
                 ],
                 registerDialog: false,
+                updateDialog: false,
+                userName: '',
                 name: '',
                 email: '',
                 password: '',
                 confirmPassword: '',
+                idValue: '',
                 nameRules: [
                     v => !!v || 'Name is required',
                     v => v.length >= 2 || 'Name must be at least 2 characters'
@@ -191,9 +214,36 @@
                     }
                 }
             },
-            editUser(user) {
-                // Implementar lógica para editar usuario
-                console.log('Editar usuario:', user);
+            async updateUser() {
+                if (this.$refs.updateForm.validate()) {
+                    try {
+                        const response = await axios.put('/api/users/' + this.idValue, {
+                            name: this.userName
+                        });
+                        this.fetchUsers();
+                        this.closeUpdateDialog();
+                        this.showSuccessSnackbar(response.data.message);
+                    } catch (error) {
+                        if (error.response) {
+                            if (error.response.status === 422) {
+                                const errors = error.response.data.errors;
+                                this.showErrorMessages(errors);
+                            } else {
+                                console.log('An error occurred. Please try again later.');
+                            }
+                        } else {
+                            console.error(error);
+                        }
+                    }
+                }
+            },
+            openUpdateDialog(user) {
+                this.idValue = user['id'];
+                this.userName = user['name'];
+                this.updateDialog = true;
+            },
+            closeUpdateDialog() {
+                this.updateDialog = false;
             },
             async deleteUser(user) {
                 try {

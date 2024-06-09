@@ -27,6 +27,9 @@
                             </v-text-field>
                             <v-btn type="submit" color="primary">Submit</v-btn>
                         </v-form>
+                        <div style="margin-top: 20px; text-align: center;">
+                            <span>Are you already registered?, <router-link to="/login">login here</router-link></span>
+                        </div>
                     </v-card-text>
                 </v-card>
             </v-col>
